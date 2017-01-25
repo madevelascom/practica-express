@@ -1,0 +1,33 @@
+extends layout
+
+block content
+ div.container
+
+  h1 Dashboard de proyectos
+  p Proyectos
+
+  div.btn-group
+   button(type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Action 
+    span.caret
+   ul.dropdown-menu
+    li Action
+    li Another action
+
+
+  button(class = 'btn btn-default') Agregar tarea
+
+  div.container
+  div.col-md-4
+   div(id = 'incial' class = 'dropzone') Inicial
+   div(class = 'draggable drag-drop') Prueba
+  div.col-md-4
+   div(id = 'desarrollo' class = 'dropzone') En desarrollo
+  div.col-md-4
+   div(id = 'finalizado' class = 'dropzone') Finalizado
+
+
+  script(type='text/javascript', src='jquery/dist/jquery.js')
+  script(type='text/javascript', src='bootstrap/dist/js/bootstrap.js')
+  script(type='text/javascript', src='interactjs/dist/interactjs.min.js')
+  
+  script(type='text/javascript', src='/javascripts/scripts-drag.js')
