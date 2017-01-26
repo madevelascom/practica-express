@@ -1,0 +1,25 @@
+body{
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.select{
+	margin-left: 12px;
+	border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.pt-20{
+	padding-top: 20px;
+}
+
+.bold{
+	font-weight: bold;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.text-left{
+	text-align: left;
+}
