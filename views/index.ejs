@@ -131,12 +131,12 @@
     		
     	</main>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
 	    <script src="bootstrap-css/js/bootstrap.min.js"></script>
 		<script>
 
             $(document).ready(function(){
                 cargarProyectos();
-
             });
 
             function cargarProyectos(){
@@ -148,6 +148,26 @@
                     }
                 });
             }
+
+			$(function(){
+                $("#resp").autocomplete({
+                	source: function(req, resp){
+                        $.ajax({
+                            method: "GET",
+                            url: "/users",
+                            dataType: "json",
+                            data: {
+                                term: req.term
+							},
+                            success: function( data ) {
+                                console.log(data)
+                                resp( data );
+                            }
+                        });
+                    }
+				});
+			});
+
 		</script>
     </body>
 </html>
