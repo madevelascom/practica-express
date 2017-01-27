@@ -139,6 +139,14 @@
                 cargarProyectos();
             });
 
+            $("#proyecto").change(function(){
+                cargarTareas($(this).val());
+            })
+
+			function cargarTareas(proyectName){
+
+			}
+
             function cargarProyectos(){
                 $.get("/proyectos", function(data){
                     console.log(data);
@@ -148,6 +156,12 @@
                     }
                 });
             }
+
+            function eliminarTarea(){
+                tarea = $("jqueryParaNombreDeTarea");
+                proyecto = $("#proyecto");
+
+			}
 
 			$(function(){
 
@@ -174,7 +188,7 @@
                     titulo: $("#title").val(),
                     descripcion : $("#descrip").val(),
                     responsable : $("#resp").val(),
-                    proyecto: "hola"
+                    proyecto: $("#proyecto").val()
                 }
                 $.ajax({
                     type: "POST",
