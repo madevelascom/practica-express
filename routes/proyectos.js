@@ -4,11 +4,11 @@ var Proyecto = require('../models/proyectos');
 var Tarea = require('../models/tareas');
 
 router.get('/', function(req, res, next) {
-    Proyecto.find(function(err, bears){
+    Proyecto.find(function(err, proyects){
         if (err){
             res.send(err);
         }
-        res.json(bears);
+        res.json(proyects);
     });
 });
 
@@ -36,6 +36,7 @@ router.get('/', function(req, res, next) {
 });
 */
 
+/*
 router.get('/', function(req, res, next) {
 
 	//ejemplo save
@@ -61,18 +62,14 @@ router.get('/', function(req, res, next) {
 
 
   	});
-  	
-
-	
-
 	//ejemplo del update
 	/*
   	Tarea.update({ titulo: "tarea1" }, { $set: { descripcion: 'haciendo un cambio o que hace' }}, function(err){
   		if (err) return handleError(err);
   		res.send("update hecho")
 	});
-	*/
-});
 
+});
+*/
 
 module.exports = router;
