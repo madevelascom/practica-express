@@ -3,6 +3,15 @@ var router = express.Router();
 var Proyecto = require('../models/proyectos');
 var Tarea = require('../models/tareas');
 
+router.get('/', function(req, res, next) {
+    Proyecto.find(function(err, bears){
+        if (err){
+            res.send(err);
+        }
+        res.json(bears);
+    });
+});
+
 /* GET users listing. */
 /*
 router.get('/', function(req, res, next) {

@@ -15,9 +15,6 @@
 	    					<label for="proyecto">Proyecto:</label>
 	    					<select class="select" id="proyecto">
 	    						<option disabled selected="">Escoge un proyecto...</option>
-	    						<option>Proyecto 1</option>
-	    						<option>Proyecto 2</option>
-	    						<option>Proyecto 3</option>
 	    					</select>
 	    				</div>
 	    			</div>
@@ -135,5 +132,22 @@
     	</main>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	    <script src="bootstrap-css/js/bootstrap.min.js"></script>
+		<script>
+
+            $(document).ready(function(){
+                cargarProyectos();
+
+            });
+
+            function cargarProyectos(){
+                $.get("/proyectos", function(data){
+                    console.log(data);
+                    for (i=0; i<data.length; i++){
+                        var nombre = data[i].nombre;
+                        $("#proyecto").append("<option>"+nombre+"</option>");
+                    }
+                });
+            }
+		</script>
     </body>
 </html>
