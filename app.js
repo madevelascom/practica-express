@@ -13,6 +13,9 @@ var tareas = require('./routes/tareas');
 
 
 var app = express();
+var browserify = require('browserify');
+var http = require('http');
+
 
 
 // view engine setup
@@ -49,6 +52,17 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+
+http.createServer(function (req, res) {
+    if (req.url === '../public/js/script.js') {
+        res.setHeader('content-type', 'application/javascript');
+        var b = browserify(__dirname + '../public/js/script.js').bundle();
+        b.on('error', console.error);
+        b.pipe(res);
+    }
+    else res.writeHead(404, 'not found')
 });
 
 module.exports = app;

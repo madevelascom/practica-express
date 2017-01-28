@@ -68,6 +68,7 @@
 .drag-drop.can-drop {
   color: #000;
   background-color: #4e4;
+  z-index: 50;
 }
 
 #estadoFinalizadas, #estadoEnDesarrollo, #estadoInicial{

@@ -1,4 +1,4 @@
-//var Tarea = require('./models/tareas'); 
+var Tarea = require('./models/tareas'); 
 
 // target elements with the "draggable" class
 interact('.draggable')
@@ -57,7 +57,7 @@ ondrop: function (event) {
 	$tar = event.relatedTarget.id;
 	$query = { _id: {$oid:{$tar}}};
 
-	/*if ($res = 'estadoEnDesarrollo'){
+	if ($res = 'estadoEnDesarrollo'){
 		Tarea.findByIdAndUpdate($tar, {estado: 2});
 	}else{
 		if ($res = 'estadoInicial'){
@@ -65,7 +65,7 @@ ondrop: function (event) {
 		}else{
 			Tarea.findByIdAndUpdate($tar, {estado: 3});
 		}
-	}*/
+	}
 	  alert(event.relatedTarget.id
         + ' was dropped into '
         + $res);

@@ -11,6 +11,6 @@ var tareas = new Schema({
 	proyecto : { type: Schema.Types.ObjectId, ref: 'Proyecto' }
 });
 
-var Tarea = mongoose.model('Tarea', tareas);
+Tarea = mongoose.model('Tarea', tareas);
 
 module.exports = Tarea;
