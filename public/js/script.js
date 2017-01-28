@@ -94,11 +94,12 @@ $("#proyecto").change(function(){
 
 function cargarTareasIniciales(proyectName){
 	$.get("/tareas/initial/" + proyectName, function(data){
+		console.log(data);
 		for (i=0; i<data.length; i++){
 			if (data[i].estado == 1){
-				var $row = $('<div>',  {class: 'row text-left pt-10 draggable drag-drop'});
+				var $row = $('<div>',  {id: data[i]._id, class: 'row text-left pt-10 draggable drag-drop'});
 				var $name = $('<div>', {class: 'col-xs-6'}).html(data[i].titulo);
-				var $button = $('<button>', {class: 'btn'}).html('&times;');
+				var $button = $('<button>', {class: 'btn', 'data-toggle': 'modal', 'data-target': '#deleteTask'}).html('&times;');
 				$row.append($name);
 				$row.append($button);
 				$('#estadoInicial').append($row);
@@ -114,7 +115,7 @@ function cargarTareasEnDesarrollo(proyectName){
 			if (data[i].estado == 2){
 				var $row = $('<div>',  {class: 'row text-left pt-10 draggable drag-drop'});
 				var $name = $('<div>', {class: 'col-xs-6'}).html(data[i].titulo);
-				var $button = $('<button>', {class: 'btn'}).html('&times;');
+				var $button = $('<button>', {class: 'btn', 'data-toggle': 'modal', 'data-target': '#deleteTask'}).html('&times;');
 				$row.append($name);
 				$row.append($button);
 				$('#estadoEnDesarrollo').append($row);
