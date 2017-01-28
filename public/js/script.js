@@ -4,11 +4,10 @@ interact('.draggable')
 // enable inertial throwing
 inertia: true,
 // keep the element within the area of it's parent
-restrict: {
-	restriction: "parent",
+/*restrict: {
 	endOnly: true,
 	elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-},
+},*/
 // enable autoScroll
 autoScroll: true,
 
@@ -46,7 +45,7 @@ window.dragMoveListener = dragMoveListener;
 // enable draggables to be dropped into this
 interact('.dropzone').dropzone({
 // only accept elements matching this CSS selector
-accept: '#yes-drop',
+accept: '.yes-drop',
 // Require a 75% element overlap for a drop to be possible
 overlap: 0.75,
 
@@ -63,16 +62,11 @@ ondragenter: function (event) {
 // feedback the possibility of a drop
 dropzoneElement.classList.add('drop-target');
 draggableElement.classList.add('can-drop');
-draggableElement.textContent = 'Dragged in';
 },
 ondragleave: function (event) {
 // remove the drop feedback style
 event.target.classList.remove('drop-target');
 event.relatedTarget.classList.remove('can-drop');
-event.relatedTarget.textContent = 'Dragged out';
-},
-ondrop: function (event) {
-	event.relatedTarget.textContent = 'Dropped';
 },
 ondropdeactivate: function (event) {
 // remove active dropzone feedback
@@ -96,7 +90,7 @@ function cargarTareasIniciales(proyectName){
 	$.get("/tareas/initial/" + proyectName, function(data){
 		for (i=0; i<data.length; i++){
 			if (data[i].estado == 1){
-				var $row = $('<div>',  {class: 'row text-left pt-10 draggable drag-drop'});
+				var $row = $('<div>',  {class: 'row text-left pt-10 draggable drag-drop yes-drop can-drop'});
 				var $name = $('<div>', {class: 'col-xs-6'}).html(data[i].titulo);
 				var $button = $('<button>', {class: 'btn'}).html('&times;');
 				$row.append($name);
@@ -112,7 +106,7 @@ function cargarTareasEnDesarrollo(proyectName){
 	$.get("/tareas/developing/" + proyectName, function(data){
 		for (i=0; i<data.length; i++){
 			if (data[i].estado == 2){
-				var $row = $('<div>',  {class: 'row text-left pt-10 draggable drag-drop'});
+				var $row = $('<div>',  {class: 'row text-left pt-10 draggable drag-drop yes-drop can-drop'});
 				var $name = $('<div>', {class: 'col-xs-6'}).html(data[i].titulo);
 				var $button = $('<button>', {class: 'btn'}).html('&times;');
 				$row.append($name);
@@ -127,7 +121,7 @@ function cargarTareasFinalizadas(proyectName){
 	$.get("/tareas/finished/" + proyectName, function(data){
 		for (i=0; i<data.length; i++){
 			if (data[i].estado == 3){
-				var $row = $('<div>',  {class: 'row text-left pt-10 draggable drag-drop'});
+				var $row = $('<div>',  {class: 'row text-left pt-10 draggable drag-drop yes-drop can-drop'});
 				var $name = $('<div>', {class: 'col-xs-6'}).html(data[i].titulo);
 				$row.append($name);
 				$('#estadoFinalizadas').append($row);
