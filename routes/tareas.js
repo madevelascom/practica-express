@@ -70,15 +70,24 @@ router.post('/', function(req, res, next){
     res.send("Tarea Guardada Con Exito")
 });
 
+/*
 router.delete('/:idTarea', function(req, res, next){
     var id = req.params.idTarea;
+    console.log(id + "esta es la tarea")
     Tarea.remove({
         titulo: id
     });
-    tarea.save(function(err){
-        if (err) return handleError(err);
+    res.send("eliminada tarea")
+});
+*/
+
+router.delete('/', function(req, res, next){
+    var id = req.body.titulo;
+    console.log(id + "esta es la tarea")
+    Tarea.remove({ _id : id }, function (err) {
+        console.log("hubo problemas")
     });
-    res.send("Tarea Guardada Con Exito")
+    res.send("eliminada tarea")
 });
 
 
