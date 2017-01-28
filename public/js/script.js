@@ -3,10 +3,12 @@ $(document).ready(function(){
 });
 
 $("#proyecto").change(function(){
-    cargarTareas($(this).val());
+    cargarTareasIniciales($(this).val());
+    cargarTareasEnDesarrollo($(this).val());
+    cargarTareasFinalizadas($(this).val());
 })
 
-function cargarTareas(proyectName){
+function cargarTareasIniciales(proyectName){
     $.get("/tareas/initial/" + proyectName, function(data){
         for (i=0; i<data.length; i++){
             var $row = $('<div>',  {class: 'row text-left pt-10'});
@@ -15,6 +17,30 @@ function cargarTareas(proyectName){
             $row.append($name);
             $row.append($button);
             $('#estadoInicial').append($row);
+        }
+    });
+}
+
+function cargarTareasEnDesarrollo(proyectName){
+    $.get("/tareas/developing/" + proyectName, function(data){
+        for (i=0; i<data.length; i++){
+            var $row = $('<div>',  {class: 'row text-left pt-10'});
+            var $name = $('<div>', {class: 'col-md-11'}).html(data[i].titulo);
+            var $button = $('<button>', {class: 'btn'}).html('&times;');
+            $row.append($name);
+            $row.append($button);
+            $('#estadoEnDesarrollo').append($row);
+        }
+    });
+}
+
+function cargarTareasFinalizadas(proyectName){
+    $.get("/tareas/finished/" + proyectName, function(data){
+        for (i=0; i<data.length; i++){
+            var $row = $('<div>',  {class: 'row text-left pt-10'});
+            var $name = $('<div>', {class: 'col-md-11'}).html(data[i].titulo);
+            $row.append($name);
+            $('#estadoFinalizadas').append($row);
         }
     });
 }
