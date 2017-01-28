@@ -3,7 +3,7 @@ var router = express.Router();
 var Proyecto = require('../models/proyectos');
 var Tarea = require('../models/tareas');
 
-router.get('/:nombre', function(req, res, next) {
+router.get('/initial/:nombre', function(req, res, next) {
     var nombre = req.params.nombre;
 
     Proyecto.find().where('nombre').equals(nombre).exec(function(err, data){
@@ -16,7 +16,7 @@ router.get('/:nombre', function(req, res, next) {
                 var id = data[i].id;
             }
         }
-        Tarea.find().where('proyecto').equals(id).exec(function(err, data2){
+        Tarea.find().where('proyecto').equals(id).where('estado').equals(1).exec(function(err, data2){
             res.json(data2);
         });
     });

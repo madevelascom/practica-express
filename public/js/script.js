@@ -7,7 +7,7 @@ $("#proyecto").change(function(){
 })
 
 function cargarTareas(proyectName){
-    $.get("/tareas/" + proyectName, function(data){
+    $.get("/tareas/initial/" + proyectName, function(data){
         for (i=0; i<data.length; i++){
             var $row = $('<div>',  {class: 'row text-left pt-10'});
             var $name = $('<div>', {class: 'col-md-11'}).html(data[i].titulo);
