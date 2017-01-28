@@ -74,25 +74,15 @@
 	    		</div>
 	    		<div class="row pt-20 text-center">
 	    			<div class="col-md-4">
-	    				<div class="well conainer">
+	    				<div id="estadoInicial" class="well conainer">
 	    					<h4 class="bold">Inicial</h4>
-	    					<div class="row text-left">
-		    					<form class="form-horizontal" action="" method="delete">
-		    						<div class="form-group col-md-12">
-			    						<span>Tarea 1</span>
-		    							<input type="hidden" value="1">
-		    						</div>
-	    							<input type="submit" value="&times;">
-		    					</form>
+	    					<div class="row text-left pt-10">
+	    						<div class="col-md-11">Tarea 1</div>
+    							<button class="btn">&times;</button>
 	    					</div>
-	    					<div class="row text-left">
-		    					<form class="form-horizontal" action="" method="delete">
-		    						<div class="form-group col-md-12">
-			    						<span>Tarea 2</span>
-		    							<input type="hidden" value="2">
-		    						</div>
-	    							<input type="submit" value="&times;">
-		    					</form>
+	    					<div class="row text-left pt-10">
+	    						<div class="col-md-11">Tarea 1</div>
+    							<button class="btn">&times;</button>
 	    					</div>
 	    				</div>
 	    			</div>
@@ -133,76 +123,6 @@
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
 	    <script src="bootstrap-css/js/bootstrap.min.js"></script>
-		<script>
-
-            $(document).ready(function(){
-                cargarProyectos();
-            });
-
-            $("#proyecto").change(function(){
-                cargarTareas($(this).val());
-            })
-
-			function cargarTareas(proyectName){
-
-			}
-
-            function cargarProyectos(){
-                $.get("/proyectos", function(data){
-                    console.log(data);
-                    for (i=0; i<data.length; i++){
-                        var nombre = data[i].nombre;
-                        $("#proyecto").append("<option>"+nombre+"</option>");
-                    }
-                });
-            }
-
-            function eliminarTarea(){
-                tarea = $("jqueryParaNombreDeTarea");
-                proyecto = $("#proyecto");
-
-			}
-
-			$(function(){
-
-                $("#resp").autocomplete({
-                	source: function(req, resp){
-                        $.ajax({
-                            method: "GET",
-                            url: "/users",
-                            dataType: "json",
-                            data: {
-                                term: req.term
-							},
-                            success: function( data ) {
-                                console.log(data)
-                                resp( data );
-                            }
-                        });
-                    }
-				});
-			});
-
-            function agregarTarea(){
-                data = {
-                    titulo: $("#title").val(),
-                    descripcion : $("#descrip").val(),
-                    responsable : $("#resp").val(),
-                    proyecto: $("#proyecto").val()
-                }
-                $.ajax({
-                    type: "POST",
-					url: "/tareas",
-					data: data,
-					success: function(){
-                        alert("Tarea Creada Con Exito");
-					},
-					dataType: "jsonp"
-				})
-			}
-
-
-
-		</script>
+	    <script src="js/script.js" ></script>
     </body>
 </html>

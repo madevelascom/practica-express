@@ -6,27 +6,18 @@ var Tarea = require('../models/tareas');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 	var busqueda = req.query.term;
-    Tarea.find(function(err, users){
+    Tarea.find(function(err, tareas){
         if (err) {
             res.send(err);
         }
         nombres =[];
-        for (i=0; i<users.length; i++) {
-        	if ((users[i].responsable).startsWith(busqueda)){
-                nombres.push(users[i].responsable);
+        for (i=0; i<tareas.length; i++) {
+        	if ((tareas[i].responsable).startsWith(busqueda)){
+                nombres.push(tareas[i].responsable);
 			}
         }
-        uniqueNames = nombres.filter(function(item, pos) {
-            return nombres.indexOf(item) == pos;
-        });
-        res.json(uniqueNames);
+        res.json(nombres);
     });
-	/*
-  	var usuario = new Usuario({ nombre : "pedro senseto"});
-	usuario.save(function(){
-		res.send("guardado con exito");
-	});
-	*/
 });
 
 module.exports = router;
