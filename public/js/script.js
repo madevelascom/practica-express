@@ -146,9 +146,21 @@ function cargarProyectos(){
 	});
 }
 
-function eliminarTarea(){
-	tarea = $("jqueryParaNombreDeTarea");
-	proyecto = $("#proyecto");
+function eliminarTarea(id){
+	//tarea = $("jqueryParaNombreDeTarea");
+	//proyecto = $("#proyecto");
+	console.log(id);
+	$.ajax({
+		type: "DELETE",
+		url: "/tareas",
+		dataType: "json",
+		data: {
+			titulo: id
+		},
+		success: function(){
+			alert("Tarea elimnada con exito");
+		}
+	})
 
 }
 
