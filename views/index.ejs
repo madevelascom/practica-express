@@ -22,10 +22,10 @@
 	    		<div class="row">
 	    			<div class="col-md-2">
 	    				<!-- Botón -->
-	    				<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#newTask">
+	    				<button class="btn btn-default btn-lg" data-toggle="modal" data-target="#newTask">
 	    				  <span class="dash-folder-plus"></span> Agregar Tarea
 	    				</button>
-    					<!-- Modal -->
+    					<!-- Modal para crear tareas-->
     					<div class="modal fade" id="newTask" tabindex="-1" role="dialog" aria-labelledby="newTaskLabel">
     					  <div class="modal-dialog" role="document">
     					    <div class="modal-content">
@@ -72,6 +72,22 @@
     					    </div>
     					  </div>
     					</div>
+
+                        <!-- Modal para eliminar tareas-->
+                        <div class="modal fade" id="deleteTask" tabindex="-1" role="dialog" aria-labelledby="deleteTaskLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="deleteTaskLabel">¿ Estás seguro ?</h4>
+                              </div>
+                              <div class="modal-footer">
+                                <input type="submit" form="delete-task-form" class="btn btn-success" value="Eliminar" onclick="">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 	    			</div>
 	    		</div>
 	    		<div class="row pt-20 text-center">
@@ -95,16 +111,6 @@
 	    			</div>
 	    		</div>
 	    	</div>
-
-<div id="no-drop" class="draggable drag-drop"> #no-drop </div>
-
-<div id="yes-drop" class="draggable drag-drop"> #yes-drop </div>
-
-<div id="outer-dropzone" class="dropzone">
-#outer-dropzone
-<div id="inner-dropzone" class="dropzone">#inner-dropzone</div>
-</div>
-    	
     		
     	</main>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
