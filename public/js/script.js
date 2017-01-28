@@ -3,6 +3,7 @@ $(document).ready(function(){
 });
 
 $("#proyecto").change(function(){
+    vaciarContenedores();
     cargarTareasIniciales($(this).val());
     cargarTareasEnDesarrollo($(this).val());
     cargarTareasFinalizadas($(this).val());
@@ -43,6 +44,12 @@ function cargarTareasFinalizadas(proyectName){
             $('#estadoFinalizadas').append($row);
         }
     });
+}
+
+function vaciarContenedores(){
+    $('#estadoInicial').empty();
+    $('#estadoEnDesarrollo').empty();
+    $('#estadoFinalizadas').empty();
 }
 
 function cargarProyectos(){
